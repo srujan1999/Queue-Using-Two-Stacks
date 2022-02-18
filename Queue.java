@@ -5,34 +5,52 @@ import java.io.*;
 import java.util.*;
 
 class Queue {
-
+    private Stack<Integer> obj1;
+    private Stack<Integer> obj2;
+    int i=0;
 
     public Queue() {
-
+        obj1=new Stack<Integer>();
+        obj2=new Stack<Integer>();
     }
 
     // Push element x to the back of queue.
     public void enqueue(int x) {
+        obj1.push(x);
 
     }
 
     // Removes the element from in front of queue.
     public int dequeue() {
-
+        while (!obj1.empty()){
+            obj2.push(obj1.pop());
+        }
+        i++;
+        return obj2.pop();
     }
+
+   
     
     // Get the front element.
     public int peek() {
-
+        while(!obj1.empty()){
+            obj2.push(obj1.pop());
+        }
+        return obj2.peek();
     }
     
     // Return whether the queue is empty.
     public boolean empty() {
-
+        return (obj2.empty() && obj1.empty());
     }
 
     // Return the number of elements in queue.
-    public boolean size() {
+    public int size() {
+        if (i==0){
+        return obj1.size();}
+        else{
+            return obj2.size();
+        }
 
     }
     
@@ -49,6 +67,8 @@ class Queue {
                 queue.dequeue();
             } else if (input.charAt(0) == '3') {
                 System.out.println(queue.peek());
+            } else if (input.charAt(0) == '4') {
+                System.out.println(queue.size());
             } 
         }
     }
