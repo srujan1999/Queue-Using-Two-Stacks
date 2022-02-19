@@ -16,17 +16,19 @@ class Queue {
 
     // Push element x to the back of queue.
     public void enqueue(int x) {
+        while (!obj1.isEmpty()) {
+            obj2.push(obj1.pop());
+        }
         obj1.push(x);
+        while (!obj2.isEmpty()) {
+            obj1.push(obj2.pop());
+        }
 
     }
 
     // Removes the element from in front of queue.
     public int dequeue() {
-        while (!obj1.empty()){
-            obj2.push(obj1.pop());
-        }
-        i++;
-        return obj2.pop();
+        return obj1.pop();
     }
 
    
@@ -46,12 +48,7 @@ class Queue {
 
     // Return the number of elements in queue.
     public int size() {
-        if (i==0){
-        return obj1.size();}
-        else{
-            return obj2.size();
-        }
-
+        return obj1.size();
     }
     
     public static void main(String[] args) {
